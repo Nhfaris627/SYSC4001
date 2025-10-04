@@ -1,0 +1,15 @@
+0, 50, CPU burst
+50, 1, switch to kernel mode
+51, 10, context saved
+61, 1, find vector 5 in memory position 0x000A
+62, 1, load address 0X048B into the PC
+63, 40, execute ISR for device 5
+103, 1, IRET
+104, 30, CPU burst
+134, 1, switch to kernel mode
+135, 10, context saved
+145, 1, find vector 5 in memory position 0x000A
+146, 1, load address 0X048B into the PC
+147, 211, complete I/O for device 5
+358, 1, IRET
+359, 20, CPU burst

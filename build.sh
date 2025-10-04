@@ -1,5 +1,6 @@
-mkdir -p bin
-
-clang++ -std=c++17 interrupts.cpp -o bin/interrupts
-
-echo "build complete! Executable created at bin/interrupts"
+if [ ! -d "bin" ]; then
+    mkdir bin
+else
+	rm bin/*
+fi
+g++ -g -O0 -I . -o bin/interrupts interrupts.cpp
