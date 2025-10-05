@@ -2,6 +2,7 @@
  *
  * @file interrupts.cpp
  * @author Faris Hassan
+ * @author Ivan Arkhipov
  *
  */
 
