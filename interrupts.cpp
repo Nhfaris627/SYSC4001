@@ -1,7 +1,7 @@
 /**
  *
  * @file interrupts.cpp
- * @author Sasisekhar Govind
+ * @author Faris Hassan
  *
  */
 
@@ -31,14 +31,14 @@ int main(int argc, char** argv) {
 
         if (activity == "CPU")
         {
-            // CPU burst
+            //CPU burst
             execution += std::to_string(current_time) + ", " +
                          std::to_string(duration_intr) + ", CPU burst\n";
             current_time += duration_intr;
         }
         else if (activity == "SYSCALL")
         {
-            // System call interrupt
+            //system call interrupt
             auto [boiler, next_time] = intr_boilerplate(current_time, duration_intr, 10, vectors);
             execution += boiler;
             current_time = next_time;
@@ -49,10 +49,14 @@ int main(int argc, char** argv) {
 
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time++;
+
+             // FIX: add context restore after IRET
+            execution += std::to_string(current_time) + ", 10, context restored\n";
+            current_time += 10;
         }
         else if (activity == "END_IO")
         {
-            // End of I/O interrupt
+            //end of I/O interrupt
             auto [boiler, next_time] = intr_boilerplate(current_time, duration_intr, 10, vectors);
             execution += boiler;
             current_time = next_time;
@@ -65,6 +69,10 @@ int main(int argc, char** argv) {
 
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time++;
+
+            //FIX: Add context restore after IRET
+            execution += std::to_string(current_time) + ", 10, context restored\n";
+            current_time += 10;
         }
 
     }
