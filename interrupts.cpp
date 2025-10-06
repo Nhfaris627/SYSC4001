@@ -51,9 +51,13 @@ int main(int argc, char** argv) {
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time++;
 
-             // FIX: add context restore after IRET
+             // added context restore after Interrupt return
             execution += std::to_string(current_time) + ", 10, context restored\n";
             current_time += 10;
+
+            // switch to user mode after context save/restore
+            execution += std::to_string(current_time) + ", 1, switch to user mode\n";
+            current_time += 1;
         }
         else if (activity == "END_IO")
         {
@@ -71,9 +75,13 @@ int main(int argc, char** argv) {
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time++;
 
-            //FIX: Add context restore after IRET
+            // added context restore after Interrupt return
             execution += std::to_string(current_time) + ", 10, context restored\n";
             current_time += 10;
+
+            // switch to user mode after context save/restore
+            execution += std::to_string(current_time) + ", 1, switch to user mode\n";
+            current_time += 1;
         }
 
     }
